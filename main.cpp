@@ -1,23 +1,39 @@
-#include <iostream>
-#include <stdlib.h>
-#include <conio.h>
 #include <bits/stdc++.h>
 using namespace std;
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+struct equipo{
+    char region[22];
+    char nombre[22];
+};
+struct jugador{
+    char nombre[22];
+    int edad;
+    equipo equipo;
+};
 
-int main(int argc, char** argv) {
-	int numeros[10],*puntero;
-	int mayor=INT_MIN;
-	puntero=&numeros[0];
-	
-	for(int i =1; i <=10; i++){
-		cout<<"inserte valor "<<i<<endl;
-		cin>>numeros[i];
-	}
-	for (int *puntero=&numeros[1];puntero <=&numeros[10];puntero++ ){
-		if (*puntero>mayor) mayor=*puntero;
-	}
-	cout<<"el valor maximo es= "<<mayor<<endl;
-	
-	return 0;
+int main()
+{
+    jugador personas[11];
+    jugador *apuntador=personas;
+    for(int i=0;i<=1;i++){
+        cout<<"Nombre: ";
+        cin.getline(personas[i].nombre,20);
+        cout<<"Edad: ";
+        cin>>personas[i].edad;
+        cout<<"region: ";
+        fflush(stdin);
+        cin.getline(personas[i].equipo.region,20);
+        cout<<"nombre del equipo: ";
+        cin.getline(personas[i].equipo.nombre,20);
+    }
+    cout<<endl;
+    for(;apuntador<=&personas[1];apuntador++){
+        cout<<"Nombre: "<<apuntador->nombre<<endl;
+        cout<<"Edad: "<<apuntador->edad<<endl;
+        cout<<"equipo:  "<<apuntador->equipo.region<<endl;
+        cout<<"nombre del equipo: "<<apuntador->equipo.nombre<<endl;
+        cout<<endl;
+    }
+
+    return 0;
 }
+
